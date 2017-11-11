@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  ngOnInit(){
+    let numbers = Observable.interval(1000);
+
+    numbers.subscribe(
+      (number: number) => {
+        console.log(number);
+      }
+    );
+  }
 }
