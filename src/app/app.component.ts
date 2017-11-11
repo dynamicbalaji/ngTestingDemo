@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'app';
+  numberObsSub: Subscription;
+  myObsSub: Subscription;
 
   ngOnInit(){
     let numbers = Observable.interval(1000);
 
-    numbers.subscribe(
+    this.numberObsSub = numbers.subscribe(
       (number: number) => {
         console.log(number);
       }
@@ -35,10 +38,15 @@ export class AppComponent {
         , 7000);
     } );
 
-    myObservable.subscribe(
+    this.myObsSub = myObservable.subscribe(
       (msg: string) => {console.log(msg);},
       (error: string) => {console.log(error);},
       () => {console.log('completed');}
     );
+  }
+
+  ngOnDestroy() {
+    this.numberObsSub.unsubscribe();
+    this.myObsSub.unsubscribe();
   }
 }
