@@ -3,6 +3,7 @@ import { EventEmitter } from '@angular/core';
 
 export class VoteComponent { 
   totalVotes = 0; 
+  //@Output
   voteChanged = new EventEmitter();
 
   upVote() { 
