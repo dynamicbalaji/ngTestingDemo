@@ -2,6 +2,8 @@ import { TodosComponent } from './todos.component';
 import { TodoService } from './todo.service'; 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/empty';
+import 'rxjs/add/observable/throw';
 
 describe('TodosComponent', () => {
   let component: TodosComponent;
@@ -25,5 +27,34 @@ describe('TodosComponent', () => {
     //expect(component.todos.length).toBeGreaterThan(0);
     //expect(component.todos.length).toBe(3);
     expect(component.todos).toBe(todos);
+  });
+
+  it('should call add method to add a value to todo property', () => {
+    /* let spy = spyOn(service, 'add').and.callFake(t => {
+      return Observable.empty();
+    }); */
+    let spy = spyOn(service, 'add').and.returnValue(Observable.empty());
+
+    component.add();
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should add a value to todo property after calling add method', () => {
+    let todo = {id: 1};
+    let spy = spyOn(service, 'add').and.returnValue(Observable.from([todo]));
+
+    component.add();
+
+    expect(component.todos.indexOf(todo)).toBeGreaterThan(-1);
+  });
+
+  it('should throw error if value is not added through add method', () => {
+    let errMsg = 'value is not added';
+    let spy = spyOn(service, 'add').and.returnValue(Observable.throw(errMsg));
+
+    component.add();
+
+    expect(component.message).toBe(errMsg);
   });
 });
