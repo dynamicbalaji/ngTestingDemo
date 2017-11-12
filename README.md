@@ -1,27 +1,46 @@
 # NgTestingDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This project explains how to write Unit Testing suites for Angular applications.
 
-## Development server
+## Topics Covered
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+PFB the topics covered in this project:
 
-## Code scaffolding
+* Unit Testing Fundamentals
+* Working with Strings & Arrays
+* Setup and Teardown methods
+* Working with Forms
+* Working with Event Emitters
+* Working with Spies
+* Interaction testing with Services
+* Working with Confirmation Boxes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+PFB the Pattern that are covered in unit testing:
 
-## Build
+* State Changes
+* Forms
+* Events (Output properties)
+* Services
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+PFB the limitations of unit testing:
 
-## Running unit tests
+* Routers
+* Template bindings
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Code Coverage
 
-## Running end-to-end tests
+Use below command to check on the code coverage:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+``
+ng test --code-coverage
+``
 
-## Further help
+After running this command, you will find a new folder 'coverage' will be created under project folder. Open the index.html file in that folder to see the code coverage details.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Tech Stack
+
+* Angular CLI   - 1.5.0
+* Karma         - 1.7.0
+* Jasmine       - 2.5.53
+* Typescript    - 2.4.2
+* RxJS          - 5.5.2
